@@ -1,0 +1,8 @@
+gitpython
+transformers
+typing_extensions
+requests_cache
+tokenizers
+torch
+huggingface_hub
+datasets
