@@ -74,4 +74,7 @@ class Andromeda:
         self.model.save_pretrained(self.path)
 
     def train(self):
-        self.trainer.train(resume_from_checkpoint=f'{self.path}/training/checkpoints')
+        if len(os.listdir(f'{self.path}/training/checkpoints')) != 0:
+            self.trainer.train(resume_from_checkpoint=f'{self.path}/training/checkpoints')
+        else:
+            self.trainer.train()
