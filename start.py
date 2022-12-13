@@ -5,8 +5,8 @@ import os
 print('Initializing...')
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 if not os.path.exists('andromeda_state.pkl'):
-    andromeda = Andromeda()
-    save_state(andromeda, 'andromeda')
+    model = Andromeda()
+    save_state(model, 'andromeda')
 print('Loading model state...')
-andromeda = load_state('andromeda')
+model = load_state('andromeda')
 print('Done.')
