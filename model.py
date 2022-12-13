@@ -27,6 +27,26 @@ class Andromeda:
             self.config = AutoConfig.from_pretrained(self.path)
         self.device = 0 if cuda.is_available() else -1
         self.pipeline = pipeline('text-generation', model=self.model, tokenizer=self.tokenizer, config=self.config, device=self.device)
+        self.trainer = Trainer(
+            model=self.model,
+            args=TrainingArguments(
+                output_dir=f'{self.path}/training/checkpoints',
+                num_train_epochs=1,
+                per_device_train_batch_size=1,
+                per_device_eval_batch_size=1,
+                warmup_steps=500,
+                weight_decay=0.01,
+                logging_dir=f'{self.path}/logs',
+                logging_steps=10,
+                save_steps=500,
+                save_total_limit=3,
+                ),
+            train_dataset=f'{self.path}/training/data/training.txt',
+            eval_dataset=f'{self.path}/training/data/validation.txt',
+            tokenizer=self.tokenizer,
+            data_collator=None,
+            compute_metrics=None
+            )
 
     def generate(self, inputs: str, return_inputs: bool = False, **kwargs):
         generator = self.pipeline
@@ -52,3 +72,6 @@ class Andromeda:
         self.tokenizer.save_pretrained(self.path)
         self.config.save_pretrained(self.path)
         self.model.save_pretrained(self.path)
+
+    def train(self):
+        self.trainer.train(resume_from_checkpoint=f'{self.path}/training/checkpoints')
