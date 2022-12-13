@@ -1,25 +1,31 @@
-from transformers import AutoTokenizer, GPTNeoForCausalLM, AutoConfig, pipeline, Trainer, TrainingArguments
+from transformers import AutoTokenizer, GPTNeoForCausalLM, AutoConfig, pipeline, Trainer, TrainingArguments, AutoModelForCausalLM
 import os
 from torch import cuda
 
 
 class Andromeda:
     def __init__(self):
+        cwd = os.path.abspath(os.path.dirname(__file__))
+        os.chdir(cwd)
         self.name = 'andromeda'
         self.version = '0.0.1'
-        self.path = f'{os.path.abspath(os.path.dirname(__file__))}/andromeda-latest'
-        self.model = GPTNeoForCausalLM.from_pretrained(self.path)
-        self.tokenizer = AutoTokenizer.from_pretrained(self.path)
-        self.config = AutoConfig.from_pretrained(self.path)
-        self.device = 0 if cuda.is_available() else -1
-        self.pipeline = pipeline('text-generation', model=self.model, tokenizer=self.tokenizer, config=self.config, device=self.device)
-
-        if not self.path.exists():
+        self.path = f'{cwd}/andromeda-latest'
+        if not os.path.exists(self.path):
             os.mkdir(self.path)
+            os.chdir(self.path)
             os.mkdir(f'{self.path}/training')
             os.mkdir(f'{self.path}/training/checkpoints')
             os.mkdir(f'{self.path}/training/data')
             os.mkdir(f'{self.path}/logs')
+            self.model = AutoModelForCausalLM.from_pretrained('EleutherAI/gpt-neo-125M')
+            self.tokenizer = AutoTokenizer.from_pretrained('EleutherAI/gpt-neo-125M')
+            self.config = AutoConfig.from_pretrained('EleutherAI/gpt-neo-125M')
+        else:
+            self.model = GPTNeoForCausalLM.from_pretrained(f'{cwd}/andromeda-latest')
+            self.tokenizer = AutoTokenizer.from_pretrained(f'{cwd}/andromeda-latest')
+            self.config = AutoConfig.from_pretrained(self.path)
+        self.device = 0 if cuda.is_available() else -1
+        self.pipeline = pipeline('text-generation', model=self.model, tokenizer=self.tokenizer, config=self.config, device=self.device)
 
     def generate(self, inputs: str, return_inputs: bool = False, **kwargs):
         generator = self.pipeline
@@ -45,22 +51,3 @@ class Andromeda:
         self.tokenizer.save_pretrained(self.path)
         self.config.save_pretrained(self.path)
         self.model.save_pretrained(self.path)
-
-    #TODO: Implement training
-    def train(self, dataset, **kwargs):
-        training_args = TrainingArguments(
-            output_dir=f'{self.path}/training/checkpoints',
-            overwrite_output_dir=True,
-            num_train_epochs=1,
-            per_device_train_batch_size=1,
-            save_steps=500,
-            save_total_limit=2,
-            **kwargs
-        )
-        trainer = Trainer(
-            model=self.model,
-            args=training_args,
-            train_dataset=dataset
-        )
-        trainer.train()
-        self.save()
