@@ -52,21 +52,3 @@ class Andromeda:
         self.tokenizer.save_pretrained(self.path)
         self.config.save_pretrained(self.path)
         self.model.save_pretrained(self.path)
-
-    def train(self, data='training', epochs=1, batch_size=1, **kwargs):
-        training_args = TrainingArguments(
-            output_dir=f'{self.path}/training/checkpoints',
-            overwrite_output_dir=True,
-            num_train_epochs=epochs,
-            per_device_train_batch_size=batch_size,
-            save_steps=500,
-            save_total_limit=2,
-            **kwargs
-            )
-        trainer = Trainer(
-            model=self.model,
-            args=training_args,
-            train_dataset=f'{self.path}/training/data/{data}.txt'
-            )
-        trainer.train()
-        self.save()

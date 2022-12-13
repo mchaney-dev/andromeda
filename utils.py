@@ -2,6 +2,7 @@ import textblob
 import requests_cache
 import random
 from bs4 import BeautifulSoup
+import os
 
 class Extractor:
     def __init__(self, urls: list, plaintext: list = []):
@@ -60,6 +61,7 @@ class Dataset:
             self.data.append(f'OUTPUT: {after}\n')
 
     def export(self, train_split=True, val_split=True):
+        os.chdir(f'{os.path.abspath(os.path.dirname(__file__))}/andromeda-latest/training/data')
         if train_split:
             self.data = self.data[:int(len(self.data) * 0.8)]
             with open('training.txt', 'w') as file:
