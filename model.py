@@ -17,9 +17,9 @@ class Andromeda:
             os.mkdir(f'{self.path}/training/checkpoints')
             os.mkdir(f'{self.path}/training/data')
             os.mkdir(f'{self.path}/logs')
-            self.model = AutoModelForCausalLM.from_pretrained('EleutherAI/gpt-neo-125M')
-            self.tokenizer = AutoTokenizer.from_pretrained('EleutherAI/gpt-neo-125M')
-            self.config = AutoConfig.from_pretrained('EleutherAI/gpt-neo-125M')
+            self.model = AutoModelForCausalLM.from_pretrained('EleutherAI/gpt-neo-125M', cache_dir=self.path)
+            self.tokenizer = AutoTokenizer.from_pretrained('EleutherAI/gpt-neo-125M', cache_dir=self.path)
+            self.config = AutoConfig.from_pretrained('EleutherAI/gpt-neo-125M', cache_dir=self.path)
         else:
             self.model = GPTNeoForCausalLM.from_pretrained(f'{cwd}/andromeda-latest')
             self.tokenizer = AutoTokenizer.from_pretrained(f'{cwd}/andromeda-latest')
