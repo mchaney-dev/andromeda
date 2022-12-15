@@ -1,6 +1,8 @@
 from transformers import AutoTokenizer, GPTNeoForCausalLM, AutoConfig, pipeline, Trainer, TrainingArguments, AutoModelForCausalLM
 import os
 from torch import cuda
+from utils import compute_metrics, pickle_dataset, unpickle_dataset
+
 class Andromeda:
     def __init__(self):
         cwd = os.path.abspath(os.path.dirname(__file__))
@@ -39,11 +41,11 @@ class Andromeda:
                 save_steps=500,
                 save_total_limit=3,
                 ),
-            train_dataset=f'{self.path}/training/data/training.txt',
-            eval_dataset=f'{self.path}/training/data/validation.txt',
+            train_dataset=unpickle_dataset(f'{self.path}/training/data/training.pkl'),
+            eval_dataset=unpickle_dataset(f'{self.path}/training/data/evaluation.pkl'),
             tokenizer=self.tokenizer,
             data_collator=None,
-            compute_metrics=None
+            compute_metrics=compute_metrics
             )
 
     def generate(self, inputs: str, return_inputs: bool = False, **kwargs):
@@ -71,11 +73,29 @@ class Andromeda:
         self.config.save_pretrained(self.path)
         self.model.save_pretrained(self.path)
 
-    def train(self):
-        if len(os.listdir(f'{self.path}/training/checkpoints')) != 0:
-            self.trainer.train(resume_from_checkpoint=f'{self.path}/training/checkpoints')
+    def train(self, streaming=True, length=1000):
+        if os.path.exists(f'{self.path}/training/data/training.pkl'):
+            if streaming:
+                for i in range(length):
+                    if len(os.listdir(f'{self.path}/training/checkpoints')) != 0:
+                        self.trainer.train(resume_from_checkpoint=f'{self.path}/training/checkpoints')
+                    else:
+                        self.trainer.train()
+            else:
+                self.trainer.train()
         else:
-            self.trainer.train()
+            print('No training data found.')
 
     def tokenize(self, samples):
         return self.tokenizer.tokenize(samples['text'], padding='max_length', truncation=True)
+
+    def evaluate(self, streaming=True, length=1000):
+        if os.path.exists(f'{self.path}/training/data/evaluation.pkl'):
+            if streaming:
+                eval_dataset = unpickle_dataset(f'{self.path}/training/data/evaluation.pkl')
+                for i in range(length):
+                    self.trainer.evaluate(eval_dataset=eval_dataset)
+            else:
+                self.trainer.evaluate()
+        else:
+            print('No evaluation data found.')
