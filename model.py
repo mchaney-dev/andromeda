@@ -1,8 +1,6 @@
 from transformers import AutoTokenizer, GPTNeoForCausalLM, AutoConfig, pipeline, Trainer, TrainingArguments, AutoModelForCausalLM
 import os
 from torch import cuda
-
-
 class Andromeda:
     def __init__(self):
         cwd = os.path.abspath(os.path.dirname(__file__))
@@ -78,3 +76,6 @@ class Andromeda:
             self.trainer.train(resume_from_checkpoint=f'{self.path}/training/checkpoints')
         else:
             self.trainer.train()
+
+    def tokenize(self, samples):
+        return self.tokenizer.tokenize(samples['text'], padding='max_length', truncation=True)
