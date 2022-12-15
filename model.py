@@ -31,6 +31,7 @@ class Andromeda:
             model=self.model,
             args=TrainingArguments(
                 output_dir=f'{self.path}/training/checkpoints',
+                max_steps=1000,
                 num_train_epochs=1,
                 per_device_train_batch_size=1,
                 per_device_eval_batch_size=1,
