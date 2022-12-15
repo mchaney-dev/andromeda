@@ -14,3 +14,6 @@ def pickle_dataset(dataset, path):
 
 def unpickle_dataset(path):
     return pickle.load(open(path, 'rb'))
+
+def tokenize(tokenizer, samples):
+    return tokenizer.tokenize(samples['text'], padding='max_length', truncation=True)
