@@ -1,19 +1,40 @@
-import numpy as np
-import evaluate
 import pickle
+import os
+import shutil
+import datetime
+from git import Repo
 
-metric = evaluate.load('accuracy')
+def save_model_state(obj, name):
+    os.chdir(os.path.dirname(__file__))
+    with open(f'{name}_state.pkl', 'xb') as f:
+        pickle.dump(obj, f)
 
-def compute_metrics(eval_pred):
-    logits, labels = eval_pred
-    predictions = np.argmax(logits, axis=-1)
-    return metric.compute(predictions=predictions, references=labels)
+def load_model_state(name):
+    os.chdir(os.path.dirname(__file__))
+    with open(f'{name}_state.pkl', 'rb') as f:
+        return pickle.load(f)
 
-def pickle_dataset(dataset, path):
-    pickle.dump(dataset, open(path, 'wb'))
+def cleanup():
+    os.chdir(os.path.dirname(__file__))
+    if os.path.exists('andromeda_state.pkl'):
+        os.remove('andromeda_state.pkl')
+    if os.path.exists('andromeda-latest'):
+        shutil.rmtree('andromeda-latest')
+    if os.path.exists('logs'):
+        shutil.rmtree('logs')
 
-def unpickle_dataset(path):
-    return pickle.load(open(path, 'rb'))
-
-def tokenize(tokenizer, samples):
-    return tokenizer.tokenize(samples['text'], padding='max_length', truncation=True)
+def log(msg, priority='INFO'):
+    if not os.path.exists(f'{os.path.dirname(__file__)}/logs'):
+        os.mkdir(f'{os.path.dirname(__file__)}/logs')
+    os.chdir(f'{os.path.dirname(__file__)}/logs')
+    timestamp = datetime.datetime.now().strftime('%m-%d-%Y %H:%M:%S')
+    message = f'{timestamp} - [{priority}]: {msg}'
+    if not os.path.exists('andromeda.log'):
+        with open('andromeda.log', 'x') as f:
+            f.write(message)
+        f.close()
+    else:
+        with open('andromeda.log', 'a') as f:
+            f.write(message)
+        f.close()
+    print(message)

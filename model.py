@@ -1,8 +1,7 @@
-from transformers import AutoTokenizer, GPTNeoForCausalLM, AutoConfig, pipeline, Trainer, TrainingArguments, AutoModelForCausalLM
+from happytransformer import HappyGeneration, GENSettings, GENTrainArgs
 import os
-from torch import cuda
 
-class Andromeda:
+class Model(HappyGeneration):
     def __init__(self):
         cwd = os.path.abspath(os.path.dirname(__file__))
         os.chdir(cwd)
@@ -15,35 +14,7 @@ class Andromeda:
             os.mkdir(f'{self.path}/training')
             os.mkdir(f'{self.path}/training/checkpoints')
             os.mkdir(f'{self.path}/training/data')
-            os.mkdir(f'{self.path}/logs')
-            self.model = AutoModelForCausalLM.from_pretrained('EleutherAI/gpt-neo-125M')
-            self.tokenizer = AutoTokenizer.from_pretrained('EleutherAI/gpt-neo-125M')
-            self.config = AutoConfig.from_pretrained('EleutherAI/gpt-neo-125M')
-            self.save()
+            self.model = HappyGeneration(model_type='GPT-NEO', model_name='EleutherAI/gpt-neo-125M')
+            self.model.save(self.path)
         else:
-            self.model = GPTNeoForCausalLM.from_pretrained(f'{cwd}/andromeda-latest')
-            self.tokenizer = AutoTokenizer.from_pretrained(f'{cwd}/andromeda-latest')
-            self.config = AutoConfig.from_pretrained(self.path)
-        self.device = 0 if cuda.is_available() else -1
-        self.pipeline = pipeline('text-generation', model=self.model, tokenizer=self.tokenizer, config=self.config, device=self.device)
-
-    def generate(self, inputs: str, **kwargs):
-        generator = self.pipeline
-        output = generator(
-            text_inputs=inputs,
-            do_sample=True,
-            max_new_tokens=self.config.max_length,
-            temperature=self.config.temperature,
-            top_k=self.config.top_k,
-            top_p=self.config.top_p,
-            bad_words_ids=self.config.bad_words_ids,
-            repetition_penalty=self.config.repetition_penalty,
-            length_penalty=self.config.length_penalty,
-            **kwargs
-            )
-        return output
-
-    def save(self):
-        self.tokenizer.save_pretrained(self.path)
-        self.config.save_pretrained(self.path)
-        self.model.save_pretrained(self.path)
+            self.model = HappyGeneration(model_type='GPT-NEO', model_name='EleutherAI/gpt-neo-125M', load_path=self.path)
