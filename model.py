@@ -1,6 +1,6 @@
 from happytransformer import HappyGeneration, GENSettings, GENTrainArgs
 import os
-from utils import save_model_state, load_model_state, log
+from .utils import save_model_state, load_model_state, log
 
 class Model(HappyGeneration):
     def __init__(self):
