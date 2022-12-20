@@ -1,18 +1,6 @@
-import pickle
 import os
 import shutil
 import datetime
-from git import Repo
-
-def save_model_state(obj, name):
-    os.chdir(os.path.dirname(__file__))
-    with open(f'{name}_state.pkl', 'xb') as f:
-        pickle.dump(obj, f)
-
-def load_model_state(name):
-    os.chdir(os.path.dirname(__file__))
-    with open(f'{name}_state.pkl', 'rb') as f:
-        return pickle.load(f)
 
 def cleanup():
     os.chdir(os.path.dirname(__file__))
