@@ -2,7 +2,7 @@ from happytransformer import HappyGeneration, GENSettings, GENTrainArgs, GENEval
 import os
 from .utils import log
 
-class Model(HappyGeneration):
+class Model(object):
     def __init__(self):
         cwd = os.path.abspath(os.path.dirname(__file__))
         os.chdir(cwd)
