@@ -1,4 +1,7 @@
 # andromeda
+
+[![windows](https://github.com/mchaney-dev/andromeda/actions/workflows/windows_release.yml/badge.svg?event=workflow_dispatch)](https://github.com/mchaney-dev/andromeda/actions/workflows/windows_release.yml) [![macOS](https://github.com/mchaney-dev/andromeda/actions/workflows/macos_release.yml/badge.svg?event=workflow_dispatch)](https://github.com/mchaney-dev/andromeda/actions/workflows/macos_release.yml) [![ubuntu](https://github.com/mchaney-dev/andromeda/actions/workflows/ubuntu_release.yml/badge.svg?event=workflow_dispatch)](https://github.com/mchaney-dev/andromeda/actions/workflows/ubuntu_release.yml)
+
 Easy longform text generation for creative writing.
 
 ## Quickstart
