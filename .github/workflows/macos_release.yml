@@ -1,0 +1,23 @@
+name: macOS
+
+on:
+  workflow_dispatch
+  
+jobs:
+  test:
+    name: macOS
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["macos-latest"]
+        python-version: ["3.8"]
+    steps:
+      - name: Install package
+        run: |
+          pip install andromeda-nlp
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Test package
+        run: |
+          python ./tests/test_release.py
