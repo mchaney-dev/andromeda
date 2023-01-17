@@ -2,5 +2,10 @@ __pycache__/*
 *.code-workspace
 *.pyc
 *.txt
-cache/*
-cache*
+*.egg-info/*
+build/*
+dist/*
+setup.py
+tests/__pycache__/*
+.pytest_cache/*
+.*
