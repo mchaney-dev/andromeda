@@ -34,7 +34,7 @@ class Model(object):
         return self.model.eval(input_filepath, args=self.eval_args)
 
     def generate(self, text: str):
-        log(f'Generating text with {self.name} v{self.version} with configuration: {self.config}')
+        log(f'Generating text - {self.name} v{self.version} with configuration: {self.config}')
         return self.model.generate_text(text, args=self.config)
 
     def save(self):

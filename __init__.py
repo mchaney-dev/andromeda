@@ -1,1 +1,1 @@
-from .ht_model import Model
+from .model import Model

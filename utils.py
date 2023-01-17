@@ -4,8 +4,6 @@ import datetime
 
 def cleanup():
     os.chdir(os.path.dirname(__file__))
-    if os.path.exists('andromeda_state.pkl'):
-        os.remove('andromeda_state.pkl')
     if os.path.exists('andromeda-latest'):
         shutil.rmtree('andromeda-latest')
     if os.path.exists('logs'):
@@ -19,10 +17,10 @@ def log(msg, priority='INFO'):
     message = f'{timestamp} - [{priority}]: {msg}'
     if not os.path.exists('andromeda.log'):
         with open('andromeda.log', 'x') as f:
-            f.write(message)
+            f.write(f'{message}\n')
         f.close()
     else:
         with open('andromeda.log', 'a') as f:
-            f.write(message)
+            f.write(f'{message}\n')
         f.close()
     print(message)
