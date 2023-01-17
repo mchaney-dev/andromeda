@@ -39,7 +39,8 @@ model.save()
 
 ## To-dos
 - ~~Release as pip package~~
-- Fully implement training features
+- Fully implement training arguments
+- Add sample training data for finetuning
 - Create a downloader for different default models
 - Complete documentation
 
