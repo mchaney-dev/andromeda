@@ -41,7 +41,7 @@ model.save()
 - ~~Release as pip package~~
 - Fully implement training arguments
 - Add sample training data for finetuning
-- Create a downloader for different default models
+- Create a downloader for different default models, including a custom finetuned model
 - Complete documentation
 
 ## Contributing
