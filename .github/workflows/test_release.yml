@@ -20,4 +20,4 @@ jobs:
         uses: actions/checkout@v3
       - name: Test package
         run: |
-          python ./test_release.py
+          python ./tests/test_release.py
