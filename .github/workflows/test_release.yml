@@ -1,0 +1,23 @@
+name: Test Pip Release
+
+on:
+  workflow_dispatch
+  
+jobs:
+  test:
+    name: Test Pip Release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+        python-version: ["3.8"]
+    steps:
+      - name: Install package
+        run: |
+          pip install andromeda-nlp
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Test package
+        run: |
+          python ./test_release.py
