@@ -8,7 +8,7 @@ setuptools.setup(
     author='mchaney-dev',
     author_email='mchaneydev@gmail.com',
     url='https://github.com/mchaney-dev/andromeda',
-    install_requires=['torch', 'happytransformer', 'shutil', 'datetime', 'typing'],
+    install_requires=['torch', 'happytransformer', 'datetime', 'typing'],
     packages=setuptools.find_packages(),
     license_files=['LICENSE']
 )
