@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: Install package
         run: |
+          pip install pytest
           pip install andromeda-nlp
       - name: Checkout repository
         uses: actions/checkout@v3
