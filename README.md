@@ -45,4 +45,4 @@ model.save()
 - Complete documentation
 
 ## Contributing
-To contribute, [look at open issues](https://github.com/mchaney-dev/andromeda/issues), fork the repository and open a pull request with your changes. Or, consider opening an issue or requesting a feature.
+To contribute, [look at open issues](https://github.com/mchaney-dev/andromeda/issues), fork the repository and open a pull request with your changes. Or, if you experience an issue, please open one!
