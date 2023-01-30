@@ -18,7 +18,7 @@ jobs:
       - name: Install packages
         run: |
           pip install pathlib
-          pip install andromeda-nlp==0.1.3
+          pip install andromeda-nlp
           pip install pytest
       - name: Checkout repository
         uses: actions/checkout@v3
