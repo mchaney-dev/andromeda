@@ -2,24 +2,14 @@ import os
 import shutil
 import datetime
 
-def cleanup() -> None:
-    """
-    Cleans up all previously generated Andromeda files.
-
-    Returns None.
-    """
+def cleanup():
     os.chdir(os.path.dirname(__file__))
     if os.path.exists('andromeda-latest'):
         shutil.rmtree('andromeda-latest')
     if os.path.exists('logs'):
         shutil.rmtree('logs')
 
-def log(msg, priority='INFO') -> str:
-    """
-    Logs a message to the console and to a log file located at `andromeda-latest/logs/andromeda.log`, formatted as `MM-DD-YYYY HH:MM:SS - [PRIORITY]: MESSAGE`.
-
-    Returns the message (string).
-    """
+def log(msg, priority='INFO'):
     if not os.path.exists(f'{os.path.dirname(__file__)}/logs'):
         os.mkdir(f'{os.path.dirname(__file__)}/logs')
     os.chdir(f'{os.path.dirname(__file__)}/logs')

@@ -18,7 +18,7 @@ from andromeda import Model
 model = Model()
 model.generate('The quick brown fox jumped over the lazy dog.')
 ```
-The [default model](https://huggingface.co/mchaney/andromeda) will be downloaded from Huggingface, unless otherwise specified.
+The default model (GPT-Neo with 125M parameters) will be downloaded from Huggingface (or it will be automatically loaded from disk, if it already exists).
 
 The model configuration can be easily changed:
 ```
@@ -29,8 +29,8 @@ Finally, save the model (changes to the config will be saved as well):
 model.save()
 ```
 
+
 ## Documentation
-TBA
 
 ## Goals
 - Serve as an easy-to-understand introduction to text generation, even for those with little to no programming experience
@@ -38,10 +38,10 @@ TBA
 - The package should be modular and expandable; contributions are always encouraged
 
 ## To-dos
-- ~~Initial release as pip package~~
-- ~~Fully implement training arguments~~
-- ~~Create a downloader for different default models, including a custom finetuned model~~
+- ~~Release as pip package~~
+- Fully implement training arguments
 - Add sample training data for finetuning
+- Create a downloader for different default models, including a custom finetuned model
 - Complete documentation
 
 ## Contributing
