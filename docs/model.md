@@ -56,7 +56,7 @@
 
 ### `Model.eval_args`
 
-> Training arguments for the model. Wrapper for HappyTransformer's `GENEvalArgs` class.
+> Evaluation arguments for the model. Wrapper for HappyTransformer's `GENEvalArgs` class.
 >
 > **Properties:**
 >
@@ -109,7 +109,7 @@
 
 ### `Model.evaluate()`
 
-> Trains the model. Training arguments can be configured using the `eval_args` attribute.
+> Evaluates the model. Evaluation arguments can be configured using the `eval_args` attribute.
 >
 > **Parameters:**
 >
