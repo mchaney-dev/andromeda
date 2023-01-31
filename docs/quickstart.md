@@ -1,5 +1,3 @@
-# Quickstart
-
 To quickly generate text, try the following:
 
 ```

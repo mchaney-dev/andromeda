@@ -1,5 +1,3 @@
-# Overview
-
 Andromeda is a Python package for generating text using cutting-edge natural language processing models. It is meant to be simple, able to be used by anybody at any experience level. The main goals of the project are to:
 
 -   Serve as an easy-to-understand introduction to text generation, even for those with little to no programming experience
