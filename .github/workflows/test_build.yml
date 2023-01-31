@@ -1,11 +1,11 @@
-name: windows
+name: test build
 
 on:
   workflow_dispatch
   
 jobs:
   test:
-    name: windows
+    name: test build
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
