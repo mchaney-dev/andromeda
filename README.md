@@ -11,7 +11,7 @@ pip install andromeda-nlp
 ```
 
 ## Documentation
-Read the documentation for this project [here.](https://www.andromeda-nlp.readthedocs.io)
+Read the documentation for this project [here.](https://andromeda-nlp.readthedocs.io/en/latest/)
 
 ## Goals
 - Serve as an easy-to-understand introduction to text generation, even for those with little to no programming experience
