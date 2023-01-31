@@ -7,8 +7,7 @@ theme:
         - python
 
 nav:
-  - 'Home':
-    - 'Overview': docs/overview.md
+  - 'Home': docs/index.md
     - 'Installation': docs/installation.md
     - 'Quickstart': docs/quickstart.md
     - 'Contributing': docs/contributing.md
