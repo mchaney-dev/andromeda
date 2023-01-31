@@ -1,0 +1,16 @@
+site_name: Andromeda
+
+theme:
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - python
+
+nav:
+  - 'Home':
+    - 'Overview': docs/overview.md
+    - 'Installation': docs/installation.md
+    - 'Quickstart': docs/quickstart.md
+    - 'Contributing': docs/contributing.md
+  - 'User Guide':
+    - 'Model': docs/model.md
