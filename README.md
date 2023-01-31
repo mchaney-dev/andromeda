@@ -1,6 +1,6 @@
 # andromeda
 
-[![build](https://github.com/mchaney-dev/andromeda/actions/workflows/test_build.yml/badge.svg)](https://github.com/mchaney-dev/andromeda/actions/workflows/test_build.yml) [![docs](https://readthedocs.org/projects/andromeda-nlp/badge/?version=latest)](https://andromeda-nlp.readthedocs.io/en/latest/?badge=latest)
+[![build](https://github.com/mchaney-dev/andromeda/actions/workflows/build.yml/badge.svg)](https://github.com/mchaney-dev/andromeda/actions/workflows/build.yml) [![docs](https://readthedocs.org/projects/andromeda-nlp/badge/?version=latest)](https://andromeda-nlp.readthedocs.io/en/latest/?badge=latest)
 
 Easy longform text generation for creative writing.
 
