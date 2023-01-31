@@ -8,5 +8,4 @@ dist/*
 setup.py
 tests/__pycache__/*
 .pytest_cache/*
-.*
 site/*
