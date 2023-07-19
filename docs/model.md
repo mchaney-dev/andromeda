@@ -8,7 +8,7 @@
 >
 > - `model_type` (string): Optional. The type of model to use. Defaults to `GPT-NEO`.
 >
-> - `model_path` (string): Optional. The path to the model to use. Defaults to `mchaney/andromeda`, the custom model used in development, but can be any model from the HuggingFace model hub, or a path to a local folder containing the model's files.
+> - `model_path` (string): Optional. The path to the model to use. Defaults to `EleutherAI/gpt-neo-125m`, but can be any model from the HuggingFace model hub, or a path to a local folder containing the model's files.
 >
 > **Returns:**
 >
