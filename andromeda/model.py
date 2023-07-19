@@ -9,7 +9,7 @@ class Model(object):
 
     Parameters:
     `model_type` (string): Optional. The type of model to use. Defaults to `GPT-NEO`.
-    `model_path` (string): Optional. The path to the model to use. Defaults to `EleutherAI/gpt-neo-125m`.
+    `model_path` (string): Optional. The path to the model to use. Defaults to `EleutherAI/gpt-neo-125m`, but can be any model from the HuggingFace model hub, or a path to a local folder containing the model's files.
 
     Returns a `Model` object.
     """
