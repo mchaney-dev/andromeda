@@ -9,12 +9,12 @@ class Model(object):
 
     Parameters:
     `model_type` (string): Optional. The type of model to use. Defaults to `GPT-NEO`.
-    `model_path` (string): Optional. The path to the model to use. Defaults to `mchaney/andromeda`, the custom model used in development, but can be any model from the HuggingFace model hub, or a path to a local folder containing the model's files.
+    `model_path` (string): Optional. The path to the model to use. Defaults to `EleutherAI/gpt-neo-125m`.
 
     Returns a `Model` object.
     """
 
-    def __init__(self, model_type: Optional[str] = 'GPT-NEO', model_path: Optional[str] = 'mchaney/andromeda'):
+    def __init__(self, model_type: Optional[str] = 'GPT-NEO', model_path: Optional[str] = 'EleutherAI/gpt-neo-125m'):
         cwd = os.path.abspath(os.path.dirname(__file__))
         os.chdir(cwd)
         self.name = 'andromeda'
