@@ -7,7 +7,7 @@ model = Model()
 model.generate('The quick brown fox jumped over the lazy dog.')
 ```
 
-If no other model is specified, the [default model](https://huggingface.co/mchaney/andromeda) will be downloaded from Huggingface.
+If no other model is specified, the [default model](https://huggingface.co/EleutherAI/gpt-neo-125m) will be downloaded from Huggingface.
 
 The model configuration can be easily changed:
 
