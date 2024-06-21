@@ -21,7 +21,6 @@ setup_args = dict(
 install_requires = [
     'torch',
     'happytransformer',
-    'shutil',
     'datetime'
 ]
 
