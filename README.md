@@ -4,6 +4,15 @@
 
 Easy longform text generation.
 
+## Known Issues
+- Some modules are not being imported properly when the package is downloaded from PyPi. **PyPi releases have been yanked temporarily.**
+
+## Roadmap
+- [x] Add base features (ability to save/load model, change model configuration, training and eval utilities)
+- [ ] Add utility functions for running the package in a Google Colab instance
+- [ ] Add visualizers for training and evaluation
+- [ ] Add live Google Colab demo to documentation
+
 ## Installation
 Install from PyPI:
 ```
