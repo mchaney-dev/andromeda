@@ -14,11 +14,18 @@ class Model(object):
     Returns a `Model` object.
     """
 
-    def __init__(self, model_type: Optional[str] = 'GPT-NEO', model_path: Optional[str] = 'EleutherAI/gpt-neo-125m'):
-        cwd = os.path.abspath(os.path.dirname(__file__))
-        os.chdir(cwd)
-        self.name = 'andromeda'
-        self.path = f'{cwd}/andromeda-latest'
+    def __init__(self, 
+                 model_type: Optional[str] = 'GPT-NEO', 
+                 model_name: Optional[str] = 'gpt-neo-125m',
+                 model_path: Optional[str] = 'EleutherAI/gpt-neo-125m', 
+                 save_location: Optional[str] = None
+                 ):
+        self.name = model_name
+        if save_location:
+            self.path = f'{save_location}/andromeda'
+        else:
+            cwd = os.path.abspath(os.path.dirname(__file__))
+            self.path = f'{cwd}/andromeda'
         if not os.path.exists(self.path):
             log('Initializing...')
             os.mkdir(self.path)

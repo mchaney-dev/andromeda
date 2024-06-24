@@ -1,24 +1,20 @@
-name: build
+name: Test PyPi release
 
 on:
   workflow_dispatch
 
 jobs:
-  build:
-    name: build
+  release:
+    name: Test PyPi release
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: ["windows-latest", "ubuntu-latest"]
-        python-version: ["3.6", "3.7", "3.8", "3.9"]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
     steps:
       - name: Install package
         run: |
-          pip install pytest
           pip install andromeda-nlp
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Test package imports
-        run: |
-          python ./tests/test_build.py

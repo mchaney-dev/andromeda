@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "andromeda-nlp"
+version = "1.0.1"
+description = "Easy longform text generation."
+authors = ["mchaney-dev"]
+readme = "README.md"
+packages = [{include = "andromeda"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+torch = "^2.3.1"
+happytransformer = "^3.0.0"
+DateTime = "^5.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
