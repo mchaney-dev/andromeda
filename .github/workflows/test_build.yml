@@ -18,6 +18,7 @@ jobs:
       - name: Run Pytest
         run: |
           poetry env use python3
+          cd ../
           poetry run pytest -v
       - name: Build package
         run: |
