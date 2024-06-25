@@ -12,7 +12,10 @@ jobs:
         uses: knowsuchagency/poetry-install@v2
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Build package
+      - name: Run Pytest
         run: |
           poetry env use python3
+          poetry run pytest -v
+      - name: Build package
+        run: |
           poetry build
