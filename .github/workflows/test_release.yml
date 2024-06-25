@@ -16,5 +16,3 @@ jobs:
       - name: Install package
         run: |
           pip install andromeda-nlp
-      - name: Checkout repository
-        uses: actions/checkout@v3
