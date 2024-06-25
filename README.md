@@ -1,11 +1,8 @@
-# andromeda
+# andromeda v1.0.1
 
 [![build](https://github.com/mchaney-dev/andromeda/actions/workflows/test_build.yml/badge.svg)](https://github.com/mchaney-dev/andromeda/actions/workflows/test_build.yml) [![release](https://github.com/mchaney-dev/andromeda/actions/workflows/test_release.yml/badge.svg)](https://github.com/mchaney-dev/andromeda/actions/workflows/test_release.yml) [![docs](https://readthedocs.org/projects/andromeda-nlp/badge/?version=latest)](https://andromeda-nlp.readthedocs.io/en/latest/?badge=latest)
 
 Easy longform text generation.
-
-## Known Issues
-- Some modules are not being imported properly when the package is downloaded from PyPi. **PyPi releases have been yanked temporarily.**
 
 ## Roadmap
 - [x] Add base features (ability to save/load model, change model configuration, training and eval utilities)
