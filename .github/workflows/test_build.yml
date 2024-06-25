@@ -15,6 +15,9 @@ jobs:
           pip install pytest
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install package dependencies
+        run: |
+          poetry install
       - name: Run Pytest
         run: |
           poetry env use python3
