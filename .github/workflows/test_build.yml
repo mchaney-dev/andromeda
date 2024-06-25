@@ -10,6 +10,9 @@ jobs:
     steps:
       - name: Install Poetry
         uses: snok/install-poetry@v1.3.4
+      - name: Install Pytest
+        run: |
+          pip install pytest
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Run Pytest
