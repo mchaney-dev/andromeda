@@ -9,7 +9,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Install Poetry
-        uses: knowsuchagency/poetry-install@v2
+        uses: snok/install-poetry@v1.3.4
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Run Pytest
