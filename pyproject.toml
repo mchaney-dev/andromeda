@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "andromeda-nlp"
-version = "1.0.1"
+version = "1.0.2"
 description = "Easy longform text generation."
 authors = ["mchaney-dev"]
 readme = "README.md"
