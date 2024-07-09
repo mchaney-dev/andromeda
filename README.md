@@ -9,6 +9,7 @@ Install from PyPI:
 ```
 pip install andromeda-nlp
 ```
+This package requires Python 3.8 or higher.
 
 ## Documentation
 Read the documentation for this project [here](https://andromeda-nlp.readthedocs.io/en/latest/).
